@@ -1,0 +1,87 @@
+f add{a,b}<
+    n c;
+    c + a;
+    c + b;
+    r{c};
+>
+
+f main{}<
+    n a;
+    n b;
+
+    i{a};
+    i{b};
+
+    n c;
+
+    c + add{a,b};
+
+    p{c};
+    pb{};
+
+    n e;
+    [1...256:
+        pc{e};
+        e + 1;
+    ]
+
+    n max;
+
+    max + 25;
+
+    n ballX;
+    n ballY;
+
+    n ballVX;
+    n ballVY;
+
+    ballVX + 1;
+    ballVY + 1;
+
+    while{1}<
+        ballX + ballVX;
+        ballY + ballVY;
+
+        if{ballX is max}<
+            ballX = max-1;
+            ballVX * -1;
+        >else if{ballX is -1}<
+            ballX = 0;
+            ballVX * -1;
+        >
+        if{ballY is max}<
+            ballY = max-1;
+            ballVY * -1;
+        >else if{ballY is -1}<
+            ballY = 0;
+            ballVY * -1;
+        >
+
+        n x;
+        n y;
+
+        system{"cls"};
+        std::string out;
+
+        [0...max:
+            [0...max:
+                if{x is ballX && y is ballY}<
+                    out + '#';
+                >else<
+                    out + ' ';
+                >
+                y + 1;
+            ]
+            out + '\n';
+            x + 1;
+        ]
+
+        ps{out};
+    >
+
+    /* Example Comment */
+
+    ps{"Look at this!\n"};
+
+    i{c};
+>
